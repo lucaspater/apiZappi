@@ -12,47 +12,47 @@ import { HiHome } from "react-icons/hi";
 import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import ModalCart from "./ModalCart/ModalCart";
 
-
 const NavBar = () => {
-
-    const [openModal, setOpenModal] = useState()
-
+  const [openModal, setOpenModal] = useState();
+  const [openUser, setOpenUser] = useState();
 
   return (
     <NavBarContainerStyled>
-        <AnimatePresence>
-            {openModal && <ModalCart closeModal={setOpenModal} />}
-        </AnimatePresence>
+      <AnimatePresence>
+        {openModal && <ModalCart closeModal={setOpenModal} />}
+      </AnimatePresence>
 
       <div>
-            <Link to="/">
-                <img
-                    src="https://res.cloudinary.com/dcatzxqqf/image/upload/v1656648432/coding/NucbaZappi/Assets/nucba-zappi-icon_oe3ark.png"
-                    alt=""
-                />
-            </Link>
+        <Link to="/">
+          <img
+            src="https://res.cloudinary.com/dcatzxqqf/image/upload/v1656648432/coding/NucbaZappi/Assets/nucba-zappi-icon_oe3ark.png"
+            alt=""
+          />
+        </Link>
       </div>
       <LinksContainerStyled>
-            <Link to="/">
-                <LinkContainerStyled home>
-                    <HiHome />
-                </LinkContainerStyled>
-                Home
-            </Link>
-            <CartNavStyled>
-                <LinkContainerStyled
-                    onClick={() => setOpenModal(true)}
-                >
-                      <FaShoppingCart />
-                        <span>1</span>
-                </LinkContainerStyled>
-            </CartNavStyled>
-            <UserNavStyled>
-                <LinkContainerStyled>
-                    <span>Hola Lucas</span>
-                    <FaUserAlt/>
-                </LinkContainerStyled>
-            </UserNavStyled>
+        <Link to="/">
+          <LinkContainerStyled home>
+            <HiHome />
+          </LinkContainerStyled>
+          Home
+        </Link>
+        <CartNavStyled>
+          <LinkContainerStyled onClick={() => setOpenModal(true)}>
+            <FaShoppingCart />
+            <span>1</span>
+          </LinkContainerStyled>
+        </CartNavStyled>
+        <UserNavStyled>
+          <LinkContainerStyled
+            onClick={() => {
+              setOpenUser(!openUser);
+            }}
+          >
+            <span>Hola Lucas</span>
+            <FaUserAlt />
+          </LinkContainerStyled>
+        </UserNavStyled>
       </LinksContainerStyled>
     </NavBarContainerStyled>
   );
